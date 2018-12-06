@@ -40,7 +40,7 @@ public class AcessoController {
 	@PostMapping(value = "/login")
 	public ResponseEntity<?> acesso(final @Valid @RequestBody AccessRequest accessRequest) {
 		System.out.println(accessRequest);
-		UsuarioDataModel usuarioDataModel = repository.findByContaAndAgenciaAndPassword(accessRequest.getAgencia(), accessRequest.getConta(), accessRequest.getConta());
+		UsuarioDataModel usuarioDataModel = repository.findByContaAndAgenciaAndPassword(accessRequest.getConta(), accessRequest.getAgencia(), accessRequest.getPassword());
 				
 		if (usuarioDataModel != null)
 			return new ResponseEntity<UsuarioDataModel>(usuarioDataModel, HttpStatus.OK);
@@ -51,7 +51,7 @@ public class AcessoController {
 	@RequestMapping(value = "/extrato")
 	public ResponseEntity<List<UsuarioDataModel>> extrato(final @RequestParam String conta) {
 		System.out.println(conta);
-		List<UsuarioMovimentacaoModel> usuarioMovimentacaoModelList = usuarioMovimentacaoRepository.findByLogin(conta);
+		List<UsuarioMovimentacaoModel> usuarioMovimentacaoModelList = usuarioMovimentacaoRepository.findByConta(conta);
 		return new ResponseEntity(usuarioMovimentacaoModelList, HttpStatus.OK);
 
 	}

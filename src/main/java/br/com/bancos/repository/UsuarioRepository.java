@@ -12,5 +12,5 @@ import br.com.bancos.repository.model.UsuarioDataModel;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioDataModel, Long> {
 
-    UsuarioDataModel findByContaAndAgenciaAndPassword(final String agencia,final String conta ,final String password);
+    UsuarioDataModel findByContaAndAgenciaAndPassword(final String conta,final String agencia ,final String password);
 }

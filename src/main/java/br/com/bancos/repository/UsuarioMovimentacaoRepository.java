@@ -16,7 +16,7 @@ import br.com.bancos.repository.model.UsuarioMovimentacaoModel;
 @Repository
 public interface UsuarioMovimentacaoRepository extends JpaRepository<UsuarioMovimentacaoModel, Long> {
 
-	List<UsuarioMovimentacaoModel> findByLogin(final String login);
+	List<UsuarioMovimentacaoModel> findByConta(final String login);
 	
 	@Query("SELECT sum(u.value) FROM UsuarioMovimentacaoModel u WHERE u.conta = :conta")
 	Double getSaldo(@Param("conta") String conta);
