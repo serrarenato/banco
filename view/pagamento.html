@@ -67,7 +67,7 @@
 		<nav class="navbar">
 			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 				<li><a href="acesso-conta.html?conta=" 	onclick="location.href=this.href+conta;return false;">>Resumo</a></li>
-				<li><a href="extrato.html?conta=" 	onclick="location.href=this.href+conta;return false;">Extrato</a></li>
+		
 					<li class="active"><a href="pagamento.html" >Pagamento</a></li>
 			</ul>
 		</nav>
@@ -119,9 +119,7 @@
 				<div id="my-tab-content" class="tab-content">
 				<div class="saldo">
 				<div class="btn-group" role="group" aria-label="..." style="width:100%;"> 
-						<button type="button" class="btn btn-default nohover sm" style="width:33%;"><p>Saldo: <span class="sinal">+</span> R$ 2.400,00</p></button>
-						<button type="button" class="btn btn-default nohover sm" style="width:33%;"><p>Limite: <span class="sinal"> + </span> R$ 400,00</p></button>
-						<button type="button" class="btn btn-default nohover sm" style="width:33%;"><p>Saldo Disponível: <span class="sinal"> +</span> R$ 2.800,00</p></button>
+						<button type="button" class="btn btn-default nohover sm" style="width:33%;"><p>Saldo: <span class="sinal">+</span> R$ <script>document.write(saldo1)</script></p></button>
 					</div>
 				<p class="aviso"> Horário limite para pagamentos nesta data: 22:00 horas (Horário de Brasília). Após este horário, somente agendamentos.  </p>
 				</div>

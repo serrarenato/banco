@@ -22,10 +22,43 @@
 	};
 
 var saldo1=0;
+var extrato=0;
+var resultado ="		<table CLASS='table'>	<tr>	<th><span class='glyphicon glyphicon-file'> </span> Conta</th>           <th><span class='glyphicon glyphicon-comment'> </span> Descrição</th> 														<th><span class='glyphicon glyphicon-usd'> </span> Valor</th> 													</tr>";
 var conta = getUrlParameter('conta');
 		$.get( "http://localhost:8080/banco/saldo?conta="+conta, function( data ) {
   	
-  		 saldo1 = data	});	
+  		 saldo1 = data	});
+
+		      $( document ).ready(function() {
+       
+
+		   			
+													$.get( "http://localhost:8080/banco/extrato?conta="+conta, function( data ) {
+  	
+														extrato = data	
+														
+														  $.each(extrato, function () {
+															  var coluna= ""
+															var coluna1="<tr><td>"+this.conta+"</td>";
+															var descricao="Deposito";
+															if (this.value>0)
+																 descricao="Deposito";
+															else
+																descricao="Pagamento";
+															var coluna2="<td>"+descricao+"</td>";
+															var coluna3="<td>"+this.value+"</td></tr>";
+															resultado = resultado+ coluna1+coluna2+coluna3;
+															
+														
+												  });
+												  $('#tabela').html(resultado)	;
+												
+														});	
+							console.log( "document loaded" );
+    });	
+													
+
+
 </script>
     <title>Think Bank</title>
     <meta charset="utf-8">
@@ -57,7 +90,7 @@ var conta = getUrlParameter('conta');
 			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 				<li class="active"><a href="#saldo" data-toggle="tab">Resumo</a></li>
 			
-				<li><a href="extrato.html?conta=" 	onclick="location.href=this.href+conta;return false;">Extrato</a></li>
+				
 				<li><a href="pagamento.html?conta=" onclick="location.href=this.href+conta;return false;">Pagamento</a></li>
 	
 			</ul>
@@ -65,7 +98,7 @@ var conta = getUrlParameter('conta');
     </header>
 	<section id="main">
 	 <!-- Conteúdo principal -->
-		<div>
+		<div >
 				<div id="my-tab-content" class="tab-content">
 
 				<div class="tab-pane active" id="saldo">
@@ -75,136 +108,24 @@ var conta = getUrlParameter('conta');
 						<button type="button" class="btn btn-default nohover" style="width:33%;"><p><span class="glyphicon glyphicon-usd"> </span> Disponível:  R$ <script>document.write(saldo1)</script></p></button>
 					</div>
 				</div>
+
+
 				 <h3>Extrato últimos cinco dias</h3>
+				 <div id=tabela>
 			
 																				<table CLASS="table">
 													<tr>
-														<th><span class="glyphicon glyphicon-file"> </span> Número documento</th>           
+														<th><span class="glyphicon glyphicon-file"> </span> Conta</th>           
 														<th><span class="glyphicon glyphicon-comment"> </span> Descrição</th>
-														<th><span class="glyphicon glyphicon-calendar"> </span> Data</th>
 														<th><span class="glyphicon glyphicon-usd"> </span> Valor</th>
 													</tr>
-													<tr>
-														<td>3221</td>
-														<td>Depósito</td>
-														<td>01/02/2018</td>
-														<td>+ R$ 500,50</td>
-													</tr>
-													<tr>	   	
-														<td>5643</td>
-														<td>Resgate</td>
-														<td>06/02/2018</td>
-														<td>- R$ 200,50</td>
-													</tr>
-													<tr>	   	
-														<td>890</td>
-														<td>Depósito</td>
-														<td>01/09/2018</td>
-														<td>+ R$ 100,50</td>
-													</tr>
+													<div id=tabela2></div>
+											
 												</table>
+											</div>
 				
 					</div>
-			<!--<div class="tab-pane" id="extrato">
-				<h1>Extrato</h1>
-                <div class="extrato">
-					<!--<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						Maio 2018
-						<span class="caret"></span>
-					</button>
-					  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junho 2018</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Escolher periodo</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-					  </ul>
-					</div>
-					<section>
-    <ul class="nav nav-tabs">
-        <li><a href="#conta" data-toggle="tab">Extrato Conta</a></li>
-        <li><a href="#cartao" data-toggle="tab">Extrato fatura</a></li>
-        <li><a href="#epoupanca" data-toggle="tab">Extrato Poupança</a></li>    
-    </ul>
-    <ul class="tab-content">
-        <li class="tab-pane active" id="conta">
-		<p>Data
- <input type="text"  data-field="date" readonly></p>
- <div id="dtBox"></div>
-            <table class="table">
-					<tr> 
-						<th> Dia <th>
-						<th> Descrição <th> 
-						<th> Valor <th>
-					<tr>
-						<td> 2 <td>
-						<td> Estorno de taxa <td>				
-						<td> + R$ 100,00 <td>
-					</tr>
-					<tr>
-						<td> 4 <td>
-						<td> Compra nas casas bahia <td>				
-						<td> - R$ 100,00 <td>
-					</tr>
-					
-					<tr>
-						<td> 6 <td>
-						<td> Saque ATM <td>				
-						<td> - R$ 100,00 <td>
-					</tr>
-					
-					<tr>
-						<td> 12 <td>
-						<td> Debito Visa Electron- Pizza Hut <td>				
-						<td> - R$ 100,00 <td>
-					</tr>
-					
-					
-					</table>
-        </li>
-        <li class="tab-pane" id="cartao">
-            <ul class="nav nav-tabs">
-                <li><a href="#cartao-step1" data-toggle="tab">Visa</a></li>
-                <li><a href="#cartao-step2" data-toggle="tab">Elo</a></li>
-            </ul>
-            <ul class="tab-content">
-                <li class="tab-pane active" id="cartao-step1">
-                    <p>Maio 2018</p>
-                </li>
-                <li class="tab-pane" id="cartao-step2">
-                    <p>Junho 2018</p>
-                </li>
-            </ul>
-        </li>
-        <li class="tab-pane" id="epoupanca">
-            <ul class="nav nav-tabs">
-                <li><a href="#poupanca-step1" data-toggle="tab">Step 1</a></li>
-                <li><a href="#poupanca-step2" data-toggle="tab">Step 2</a></li>
-            </ul>
-            <ul class="tab-content">
-                <li class="tab-pane active" id="poupanca-step1">
-                    <p>I'm Module 2 Step 1.</p>
-                </li>
-                <li class="tab-pane" id="poupanca-step2">
-                    <p>Howdy, I'm Module 2 Step 2</p>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</section>
-            
-					
-				</div>
-			</div>
-			<div class="tab-pane" id="pagamento">
-				<h1>Pagamento</h1>
-				<form method="POST" id="pag">
-				<p>Informe o código de barras</p>
-			    <input id="codigoBarras" type="text"  placeholder="Código de Barras" style="width:50%" aria-describedby="basic-addon1"> 
-				<input type="submit" id="pagar" class="btn">
-				</form>
-				<div id="resultado">..</div>
-			</div>-->
+		
 			<div class="tab-pane" id="cartao">
 				<h1>Cartão</h1>
 				<section>
