@@ -8,6 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+/**
+ * 
+ * tabela de movimentação da conta do usuario.
+ *
+ */
+
 
 @Entity
 @Table(name = "usuario_movimentacao")
@@ -18,8 +24,8 @@ public class UsuarioMovimentacaoModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
-	@Column(name = "login")
-	private String login;
+	@Column(name = "conta")
+	private String conta;
 	private Double value;
 	public Long getId() {
 		return id;
@@ -27,11 +33,11 @@ public class UsuarioMovimentacaoModel implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getLogin() {
-		return login;
+	public String getConta() {
+		return conta;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setConta(String conta) {
+		this.conta = conta;
 	}
 	public Double getValue() {
 		return value;
@@ -47,7 +53,7 @@ public class UsuarioMovimentacaoModel implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((conta == null) ? 0 : conta.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
 	}
@@ -65,10 +71,10 @@ public class UsuarioMovimentacaoModel implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (login == null) {
-			if (other.login != null)
+		if (conta == null) {
+			if (other.conta != null)
 				return false;
-		} else if (!login.equals(other.login))
+		} else if (!conta.equals(other.conta))
 			return false;
 		if (value == null) {
 			if (other.value != null)
@@ -79,7 +85,7 @@ public class UsuarioMovimentacaoModel implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "UsuarioMovimentacaoModel [id=" + id + ", login=" + login + ", value=" + value + "]";
+		return "UsuarioMovimentacaoModel [id=" + id + ", login=" + conta + ", value=" + value + "]";
 	}
 	
 

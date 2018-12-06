@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,14 @@ import br.com.bancos.repository.UsuarioRepository;
 import br.com.bancos.repository.model.UsuarioDataModel;
 import br.com.bancos.repository.model.UsuarioMovimentacaoModel;
 
-@RequestMapping
+/**
+ * 
+ * Classe principal com todas as APis disponiveis na aplicação
+ *
+ */
+
+@CrossOrigin
+@RequestMapping("banco")
 @RestController
 public class AcessoController {
 
@@ -32,8 +40,8 @@ public class AcessoController {
 	@PostMapping(value = "/login")
 	public ResponseEntity<?> acesso(final @Valid @RequestBody AccessRequest accessRequest) {
 		System.out.println(accessRequest);
-		UsuarioDataModel usuarioDataModel = repository.findByLoginAndPassword(accessRequest.getName(),
-				accessRequest.getPassword());
+		UsuarioDataModel usuarioDataModel = repository.findByContaAndAgenciaAndPassword(accessRequest.getAgencia(), accessRequest.getConta(), accessRequest.getConta());
+				
 		if (usuarioDataModel != null)
 			return new ResponseEntity<UsuarioDataModel>(usuarioDataModel, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -41,28 +49,27 @@ public class AcessoController {
 	}
 
 	@RequestMapping(value = "/extrato")
-	public ResponseEntity<List<UsuarioDataModel>> extrato(final @RequestParam String login) {
-		System.out.println(login);
-		List<UsuarioMovimentacaoModel> usuarioMovimentacaoModelList = usuarioMovimentacaoRepository.findByLogin(login);
+	public ResponseEntity<List<UsuarioDataModel>> extrato(final @RequestParam String conta) {
+		System.out.println(conta);
+		List<UsuarioMovimentacaoModel> usuarioMovimentacaoModelList = usuarioMovimentacaoRepository.findByLogin(conta);
 		return new ResponseEntity(usuarioMovimentacaoModelList, HttpStatus.OK);
 
 	}
 	
 	@RequestMapping(value = "/boleto")
-	public ResponseEntity boleto(final @RequestParam Double value, @RequestParam String login) {
-		System.out.println(login + value);
+	public ResponseEntity boleto(final @RequestParam Double value, @RequestParam String conta) {
+		System.out.println(conta + value);
 		UsuarioMovimentacaoModel usuarioMovimentacaoModel = new UsuarioMovimentacaoModel();
-		usuarioMovimentacaoModel.setLogin(login);
+		usuarioMovimentacaoModel.setConta(conta);
 		usuarioMovimentacaoModel.setValue(-value);
 		usuarioMovimentacaoRepository.save(usuarioMovimentacaoModel);
 		return new ResponseEntity(HttpStatus.OK);
 
 	}
 	@RequestMapping(value = "/saldo")
-	public ResponseEntity<Double> saldo(@RequestParam String login) {
-		System.out.println(login );
-
-		Double saldo =usuarioMovimentacaoRepository.getSaldo(login);
+	public ResponseEntity<Double> saldo(@RequestParam String conta) {
+		System.out.println(conta );
+		Double saldo =usuarioMovimentacaoRepository.getSaldo(conta);
 		return new ResponseEntity(saldo, HttpStatus.OK);
 
 	}

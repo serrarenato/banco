@@ -5,8 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import br.com.bancos.repository.model.UsuarioDataModel;
 
+/**
+ * 
+ *  Acesso a tabela usuario
+ */
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioDataModel, Long> {
 
-    UsuarioDataModel findByLoginAndPassword(final String login, final String password);
+    UsuarioDataModel findByContaAndAgenciaAndPassword(final String agencia,final String conta ,final String password);
 }

@@ -1,14 +1,21 @@
 package br.com.bancos.controller.AccessRequest;
 
-public class AccessRequest {
-	String name;
+import java.io.Serializable;
+
+/**
+ * Classe de entrada para a API de login
+ * 
+ *
+ */
+public class AccessRequest implements Serializable {
+	String agencia;
 	String password;
-	
-	public String getName() {
-		return name;
+	String conta;
+	public String getAgencia() {
+		return agencia;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
 	}
 	public String getPassword() {
 		return password;
@@ -16,40 +23,13 @@ public class AccessRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "AccessRequest [name=" + name + ", password=" + password + "]";
+	public String getConta() {
+		return conta;
+	}
+	public void setConta(String conta) {
+		this.conta = conta;
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AccessRequest other = (AccessRequest) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		return true;
-	}
 	
 	
 	
