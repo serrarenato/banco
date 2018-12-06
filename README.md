@@ -15,3 +15,6 @@ GET:localhost:8080/banco/boleto?login=renato&value=10
 
 GET:localhost:8080/banco/saldo?login=renato
 
+docker-compose up
+
+
