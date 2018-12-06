@@ -61,7 +61,7 @@ public class AcessoController {
 
 	@RequestMapping(value = "/boleto")
 	public ResponseEntity boleto(final @RequestParam String value, @RequestParam String conta) {
-		System.out.println(conta + value);
+		System.out.println("Boleto:"+conta+ " "+ value);
 		UsuarioMovimentacaoModel usuarioMovimentacaoModel = new UsuarioMovimentacaoModel();
 		usuarioMovimentacaoModel.setConta(conta.replaceAll("\\D+", ""));
 		Double value2= new Double(value.replaceAll("\\D+", ""));
