@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Think Bank</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.css">	
+	<link rel="stylesheet" href="css/style.css"> 
+	<link rel="stylesheet" href="css/iThing.css">
+	<link rel="stylesheet" type="text/css" href="css/DateTimePicker.css" />
+	<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="js/DateTimePicker.js" type="text/javascript"></script>	
+	<script src="js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>	
+
+  </head>
+  <body>
+	<header>
+	<!-- Conteúdo do cabeçalho -->
+		<div class="login pull-right" style="margin-top:-20px;">	
+			<!--<a href="index.html" class="btn btn-primary botao pull-right">Sair</a>-->
+			<div class="btn-group" role="group" aria-label="...">
+				<a href="login.html" type="button" class="btn btn-primary">Acessar outra conta</a>
+				<a href="index.html"type="button" class="btn btn-warning">Sair</a>
+			</div>			
+		</div>    
+        <h1>    	
+			<img src="img/bank-icon.png" alt="Think Bank">	
+			<p>T</span>hink Bank <small></small>
+		</h1>
+		<nav class="navbar">
+			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+				<li><a href="acesso-conta.html">Resumo</a></li>
+				<li><a href="extrato.html">Extrato</a></li>
+				<li class="active"><a href="pagamento.html" >Pagamento</a></li>
+				<li><a href="cartao.html">Cartão</a></li>
+				<li><a href="transferencia.html">Transferência</a></li>
+				<li><a href="poupanca.html">Poupança</a></li>
+			</ul>
+		</nav>
+    </header>
+	<section id="main" style="width:100%">
+	 <!-- Conteúdo principal -->
+		<div>
+				<div id="my-tab-content" class="tab-content" style="width:100%">
+				
+					<!--<div style="width:50%;white-space: inherit !important">
+						<span class="pull-right">
+							<button type="button" class="btn btn-default" aria-label="Left Align">
+								<span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>
+								</button>					
+						</span>
+			
+					</div>-->
+					<div style="width:50%;white-space: inherit !important;">
+					<div class="dropdown pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+<span class="glyphicon glyphicon-align-right" aria-hidden="true">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Imprimir</span></a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Enviar por email</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Salvar em .txt</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Salvar como PDF</a></li>
+  </ul>
+</div>	
+</div>
+					
+
+			
+				<div class="comprovante" >
+			   
+				<h3>Comprovante de transferência para conta poupança</h3>
+				<p>Cliente: Ana Rosa CPF 440.002.576-10</p>
+				<p>Banco ThinkBank</p>
+				<p>Dados Origem [Agência: 0718 Conta: 49237]</p>
+				<p id="data"></p>
+				<p>Dados Destino [Agência: 0718 Conta: 343212]</p>
+				<p>Tipo Poupança PoupaMais</p>
+				
+				<p>Cliente: O próprio </p>
+				<p>Debitado de Conta corrente </p>
+				<p>Valor Total: $140,00 </p>
+				<p>Transferência realizada com sucesso através do Internet Banking. </p>
+				</div>
+				
+				
+
+			</div>
+		<div>		 
+	</section>
+   <section id="destaques" style="padding: 10px">
+	 
+	 </section>
+	 <footer>
+	 <div class="rodape">
+	 </div>
+    <!-- Conteúdo do rodapé -->
+  </footer>
+  <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>  
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </body>
+
+   
+	<script>
+	$(document).ready(function()
+ {
+var dt = new Date();
+ var time= dt.toLocaleString();
+
+ $( "#data" ).html('Data/Hora: ' + time); 
+   
+ });
+	</script>
+	
+	<script>
+// Attach a submit handler to the form
+$( "#pag" ).submit(function( event ) {
+ 
+  // Stop form from submitting normally
+  event.preventDefault();
+ var codigo = $( "#codigoBarras" ).val();
+ $( "#confirmar-dados" ).addClass("visible");
+ $( "#valor" ).val("R$ 140,00");
+ 
+ 
+});
+
+	</script>
+	
+	
+</html>

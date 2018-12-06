@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Think Bank</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.css">	
+	<link rel="stylesheet" href="css/style.css"> 
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css" />
+	<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>	
+	<script src="js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>	
+	
+  </head>
+  <body>
+	  </head>
+  <body>
+	<header>
+	<!-- Conteúdo do cabeçalho -->
+		<div class="login pull-right" style="margin-top:-20px;">	
+			<!--<a href="index.html" class="btn btn-primary botao pull-right">Sair</a>-->
+			<div class="btn-group" role="group" aria-label="...">
+				<a href="login.html" type="button" class="btn btn-primary">Acessar outra conta</a>
+				<a href="index.html"type="button" class="btn btn-warning">Sair</a>
+			</div>			
+		</div>    
+        <h1>    	
+			<img src="img/bank-icon.png" alt="Think Bank">	
+			<span>T</span>hink Bank <small></small>
+		</h1>
+		<nav class="navbar">
+			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+				<li><a href="acesso-conta.html">Resumo</a></li>
+				<li><a href="extrato.html">Extrato</a></li>
+				<li><a href="pagamento.html" >Pagamento</a></li>
+				<li><a href="cartao.html" >Cartão</a></li>
+				<li><a href="transferencia.html">Transferência</a></li>
+				<li class="active"><a href="poupanca.html">Poupança</a></li>
+			</ul>
+		</nav>
+	</header>
+
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="poupanca.html">Extrato</a></li>
+            <li class="active"><a href="aplicar-poupanca.html">Aplicar</a></li>
+            
+			<li><a href="resgatar-poupanca.html">Resgatar</a></li>
+		
+           
+          </ul>
+        </div><!--/.nav-collapse -->
+       
+      </div>
+    </div>
+  </div>
+ 
+  <div class="col-sm-10">	
+	 <!-- Conteúdo principal -->
+		
+	<div id="my-tab-content" class="tab-content">
+	<div class="saldo">
+				<div class="btn-group" role="group" aria-label="..." style="width:100%;"> 
+						<button type="button" class="btn btn-default nohover sm" style="width:25%;"><p>Poupança geral: <span class="sinal">+</span> R$ 2.400,00</p></button>
+						<button type="button" class="btn btn-default nohover sm" style="width:25%;"><p>Poupança estudos: <span class="sinal">+</span> R$ 1.400,00</p></button>
+						<button type="button" class="btn btn-default nohover sm" style="width:25%;"><p>Poupança viagem: <span class="sinal">+</span> R$ 7.400,00</p></button>
+						<button type="button" class="btn btn-default nohover sm" style="width:25%;"><p>Poupança casamento: <span class="sinal">+</span> R$ 9.400,00</p></button>
+					</div>
+				<p class="aviso" style="width:100%;"> Horário máximo para transferencia: 22:30 </p>
+				</div>
+				<div class="tab-pane active" id="pagamento">
+				<h1>Aplicar poupança <small>ThinkBank</small></h1>
+				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+					<li class="tab-pane active" id="cc">
+								<ul class="nav nav-tabs">
+								<li class="active"><a href="#cc-step1" data-toggle="tab">Aplicar</a></li>
+								
+								</ul>
+								<ul class="tab-content">
+								<li class="tab-pane active" id="cc-step1">
+									<div class="input-group" style="width:20%;">
+										<span> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Data </span><input type="text"  id="data" aria-describedby="basic-addon1" class="form-control" value="23/05/2018"></input>
+										<span> <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>Valor: </span><input type="text"  id="valor" aria-describedby="basic-addon1" class="form-control"></input>
+										<span> <span class="glyphicon glyphicon-oil" aria-hidden="true"></span>Poupança: </span>
+										<select class="form-control" id="escolher-poupanca">
+											<option>Geral</option>
+											<option>Estudos</option>
+											<option>Viagem</option>
+											<option>Casamento</option>
+										</select>
+										
+										<span> <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>Senha </span>
+										<input type="password"  id="senha" aria-describedby="basic-addon1" class="form-control"></input>
+										<br><span>  </span>
+										<p><a href="confirma-aplicacao.html"type="button" class="btn btn-confirma">Confirmar</a>
+										</span>
+									
+									</div>
+
+								</li>
+								
+								</ul>
+							</li>
+							</ul>
+	</div>	
+</div>	
+</div>	
+</div>	
+<section id="destaques" style="padding: 10px">
+	  <div id="chart_div" style="width: 600px; height: 300px;"></div>
+   
+	 </section>
+	 <footer>
+	 <div class="rodape">
+	 </div>
+    <!-- Conteúdo do rodapé -->
+  </footer>
+  <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>  
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </body>
+
+   
+	<script>
+	$(document).ready(function()
+ {
+   
+   $( "#tipoPag" ).on('change',function() {
+
+var tipoPag = $( "#tipoPag option:selected" ).val();
+  if (tipoPag == 'Débito em cartão de crédito')
+  {
+	/*$( "#spn-escolher-cartao" ).addClass("visible");*/
+	$( "#tipo-pagamento" ).removeClass("k");
+  }
+  else {
+  $( "#spn-escolher-cartao" ).removeClass("visible");
+	$( "#escolher-cartao" ).removeClass("visible");
+  
+  }
+});
+   
+ });
+	</script>
+	
+	<script>
+// Attach a submit handler to the form
+$( "#pag" ).submit(function( event ) {
+ 
+  // Stop form from submitting normally
+  event.preventDefault();
+ var codigo = $( "#codigoBarras" ).val();
+ var dt = new Date();
+ var time= dt.toLocaleDateString();
+ $( "#confirmar-dados" ).addClass("visible");
+ $( "#valor" ).val("R$ 140,00");  
+ $( "#data" ).val(time); 
+ 
+});
+
+
+
+
+	</script>
+		<script>
+	$('.input-daterange').datepicker({
+    todayBtn: false,
+    clearBtn: false,
+    orientation: "top left",
+	format: "dd/mm/yyyy",
+	startDate: "03/06/2018",
+    forceParse: false,
+    todayHighlight: true,
+    beforeShowMonth: function (date){
+                    switch (date.getMonth()){
+                      case 8:
+                        return false;
+                    }
+                },
+    toggleActive: true
+});
+	</script>
+	
+		<script>
+	$(document).ready(function()
+ {
+   
+   $( "#start" ).on('change',function() {
+   var data_esc = $( "#start" ).val();
+   var data_f_esc = $( "#end" ).val();
+    
+	if (data_esc != data_f_esc) {
+	   $( "#string-data" ).text(data_esc);
+	  
+	}
+});
+  $( "#end" ).on('change',function() {
+   var data_esc = $( "#start" ).val();
+   var data_f_esc = $( "#end" ).val();
+	if (data_esc != data_f_esc) {
+	   
+	   $( "#string-fim-data" ).text(' a ' + data_f_esc);
+	}
+});
+   
+ });
+	</script>
+	
+	
+</html>

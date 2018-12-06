@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Think Bank</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.css">	
+	<link rel="stylesheet" href="css/style.css"> 
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css" />
+	<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>	
+	<script src="js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>	
+	
+  </head>
+  <body>
+	  </head>
+  <body>
+	<header>
+	<!-- Conteúdo do cabeçalho -->
+		<div class="login pull-right" style="margin-top:-20px;">	
+			<!--<a href="index.html" class="btn btn-primary botao pull-right">Sair</a>-->
+			<div class="btn-group" role="group" aria-label="...">
+				<a href="login.html" type="button" class="btn btn-primary">Acessar outra conta</a>
+				<a href="index.html"type="button" class="btn btn-warning">Sair</a>
+			</div>			
+		</div>    
+        <h1>    	
+			<img src="img/bank-icon.png" alt="Think Bank">	
+			<span>T</span>hink Bank <small></small>
+		</h1>
+		<nav class="navbar">
+			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+				<li><a href="acesso-conta.html">Resumo</a></li>
+				<li><a href="extrato.html">Extrato</a></li>
+				<li><a href="pagamento.html" >Pagamento</a></li>
+				<li><a href="cartao.html" >Cartão</a></li>
+				<li><a href="transferencia.html">Transferência</a></li>
+				<li class="active"><a href="poupanca.html">Poupança</a></li>
+			</ul>
+		</nav>
+	</header>
+
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="poupanca.html">Extrato</a></li>
+            <li><a href="aplicar-poupanca.html">Aplicar</a></li>
+            
+			<li><a href="resgatar-poupanca.html">Resgatar</a></li>
+		
+           
+          </ul>
+        </div><!--/.nav-collapse -->
+       
+      </div>
+    </div>
+  </div>
+ 
+  <div class="col-sm-10">	
+	 <!-- Conteúdo principal -->
+		
+	<div id="my-tab-content" class="tab-content">
+	<h1>Extrato poupança <small id="string-data">Junho/2018</small><small id="string-fim-data"></small></h1>
+		<div class="input-daterange input-group" id="datepicker" style="width:30%">
+			<input type="text" class="input-sm form-control" name="start" id="start"/>
+			<span class="input-group-addon">até	</span>
+			<input type="text" class="input-sm form-control" name="end" id="end" />
+		</div>
+		
+		<ul id="tabs" class="nav nav-tabs" data-tabs="tabs" >
+	<li class="tab-pane active" id="saldo" style="width:80%">
+								<ul class="nav nav-tabs">
+								<li class="active"><a href="#geral" data-toggle="tab">Geral <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+								<li><a href="#estudos" data-toggle="tab">Estudos <span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+								<li><a href="#viagem" data-toggle="tab">Viagem <span class="glyphicon glyphicon-plane" aria-hidden="true"></span></a></li>
+								<li><a href="#casamento" data-toggle="tab">Casamento <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></li>
+								</ul>
+								<ul class="tab-content">
+									<li class="tab-pane active" id="geral">	
+										<div class="panel panel-default">
+											<!-- Default panel contents -->
+											<div class="fundo-verde"><p id="dat">Poupança Geral</div>
+											<div class="panel-body">
+												<table CLASS="table">
+													<tr>
+														<th><span class="glyphicon glyphicon-file"> </span> Número documento</th>           
+														<th><span class="glyphicon glyphicon-comment"> </span> Descrição</th>
+														<th><span class="glyphicon glyphicon-calendar"> </span> Data</th>
+														<th><span class="glyphicon glyphicon-usd"> </span> Valor</th>
+													</tr>
+													<tr>
+														<td>3221</td>
+														<td>Depósito</td>
+														<td>01/02/2018</td>
+														<td>+ R$ 500,50</td>
+													</tr>
+													<tr>	   	
+														<td>5643</td>
+														<td>Resgate</td>
+														<td>06/02/2018</td>
+														<td>- R$ 200,50</td>
+													</tr>
+													<tr>	   	
+														<td>890</td>
+														<td>Depósito</td>
+														<td>01/09/2018</td>
+														<td>+ R$ 100,50</td>
+													</tr>
+												</table>
+												<div class="fundo-verde pull-right"><p class="pull-right">Total: R$ 400,50</p></div>
+											</div>
+										</div>
+									</li>
+								<li class="tab-pane" id="estudos">
+										<div class="panel panel-default">
+											<!-- Default panel contents -->
+											<div class="fundo-verde"><p id="dat">Poupança para Estudos</div>
+											<div class="panel-body">
+												<table CLASS="table">
+													<tr>
+														<th><span class="glyphicon glyphicon-file"> </span> Número documento</th>           
+														<th><span class="glyphicon glyphicon-comment"> </span> Descrição</th>
+														<th><span class="glyphicon glyphicon-calendar"> </span> Data</th>
+														<th><span class="glyphicon glyphicon-usd"> </span> Valor</th>
+													</tr>
+													<tr>
+														<td>3221</td>
+														<td>Depósito</td>
+														<td>01/02/2018</td>
+														<td>+ R$ 500,50</td>
+													</tr>
+													<tr>	   	
+														<td>5643</td>
+														<td>Resgate</td>
+														<td>06/02/2018</td>
+														<td>- R$ 200,50</td>
+													</tr>
+													<tr>	   	
+														<td>890</td>
+														<td>Depósito</td>
+														<td>01/09/2018</td>
+														<td>+ R$ 100,50</td>
+													</tr>
+												</table>
+												<div class="fundo-verde pull-right"><p class="pull-right">Total: R$ 400,50</p></div>
+											</div>
+										</div>
+								</li>
+									<li class="tab-pane" id="viagem">
+										<div class="panel panel-default">
+											<!-- Default panel contents -->
+											<div class="fundo-verde"><p id="dat">Poupança para Viagens</div>
+											<div class="panel-body">
+												<table CLASS="table">
+													<tr>
+														<th><span class="glyphicon glyphicon-file"> </span> Número documento</th>           
+														<th><span class="glyphicon glyphicon-comment"> </span> Descrição</th>
+														<th><span class="glyphicon glyphicon-calendar"> </span> Data</th>
+														<th><span class="glyphicon glyphicon-usd"> </span> Valor</th>
+													</tr>
+													<tr>
+														<td>3221</td>
+														<td>Depósito</td>
+														<td>01/02/2018</td>
+														<td>+ R$ 500,50</td>
+													</tr>
+													<tr>	   	
+														<td>5643</td>
+														<td>Resgate</td>
+														<td>06/02/2018</td>
+														<td>- R$ 200,50</td>
+													</tr>
+													<tr>	   	
+														<td>890</td>
+														<td>Depósito</td>
+														<td>01/09/2018</td>
+														<td>+ R$ 100,50</td>
+													</tr>
+												</table>
+												<div class="fundo-verde pull-right"><p class="pull-right">Total: R$ 400,50</p></div>
+											</div>
+										</div>
+								</li>
+									<li class="tab-pane" id="casamento">
+											<div class="panel panel-default">
+											<!-- Default panel contents -->
+											<div class="fundo-verde"><p id="dat">Poupança para casamento</div>
+											<div class="panel-body">
+												<table CLASS="table">
+													<tr>
+														<th><span class="glyphicon glyphicon-file"> </span> Número documento</th>           
+														<th><span class="glyphicon glyphicon-comment"> </span> Descrição</th>
+														<th><span class="glyphicon glyphicon-calendar"> </span> Data</th>
+														<th><span class="glyphicon glyphicon-usd"> </span> Valor</th>
+													</tr>
+													<tr>
+														<td>3221</td>
+														<td>Depósito</td>
+														<td>01/02/2018</td>
+														<td>+ R$ 500,50</td>
+													</tr>
+													<tr>	   	
+														<td>5643</td>
+														<td>Resgate</td>
+														<td>06/02/2018</td>
+														<td>- R$ 200,50</td>
+													</tr>
+													<tr>	   	
+														<td>890</td>
+														<td>Depósito</td>
+														<td>01/09/2018</td>
+														<td>+ R$ 100,50</td>
+													</tr>
+												</table>
+												<div class="fundo-verde pull-right"><p class="pull-right">Total: R$ 400,50</p></div>
+											</div>
+										</div>
+					
+										
+				
+										
+										
+								
+								</li>
+								</ul>
+							</li>
+</ul>
+		
+	</div>
+	</div>	
+</div>	
+<section id="destaques" style="padding: 10px">
+	  <div id="chart_div" style="width: 600px; height: 300px;"></div>
+   
+	 </section>
+	 <footer>
+	 <div class="rodape">
+	 </div>
+    <!-- Conteúdo do rodapé -->
+  </footer>
+  <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>  
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </body>
+
+   
+	<script>
+	$(document).ready(function()
+ {
+   
+   $( "#tipoPag" ).on('change',function() {
+
+var tipoPag = $( "#tipoPag option:selected" ).val();
+  if (tipoPag == 'Débito em cartão de crédito')
+  {
+	/*$( "#spn-escolher-cartao" ).addClass("visible");*/
+	$( "#tipo-pagamento" ).removeClass("k");
+  }
+  else {
+  $( "#spn-escolher-cartao" ).removeClass("visible");
+	$( "#escolher-cartao" ).removeClass("visible");
+  
+  }
+});
+   
+ });
+	</script>
+	
+	<script>
+// Attach a submit handler to the form
+$( "#pag" ).submit(function( event ) {
+ 
+  // Stop form from submitting normally
+  event.preventDefault();
+ var codigo = $( "#codigoBarras" ).val();
+ var dt = new Date();
+ var time= dt.toLocaleDateString();
+ $( "#confirmar-dados" ).addClass("visible");
+ $( "#valor" ).val("R$ 140,00");  
+ $( "#data" ).val(time); 
+ 
+});
+
+
+
+
+	</script>
+		<script>
+	$('.input-daterange').datepicker({
+    todayBtn: false,
+    clearBtn: false,
+    orientation: "top left",
+	format: "dd/mm/yyyy",
+	startDate: "03/06/2018",
+    forceParse: false,
+    todayHighlight: true,
+    beforeShowMonth: function (date){
+                    switch (date.getMonth()){
+                      case 8:
+                        return false;
+                    }
+                },
+    toggleActive: true
+});
+	</script>
+	
+		<script>
+	$(document).ready(function()
+ {
+   
+   $( "#start" ).on('change',function() {
+   var data_esc = $( "#start" ).val();
+   var data_f_esc = $( "#end" ).val();
+    
+	if (data_esc != data_f_esc) {
+	   $( "#string-data" ).text(data_esc);
+	  
+	}
+});
+  $( "#end" ).on('change',function() {
+   var data_esc = $( "#start" ).val();
+   var data_f_esc = $( "#end" ).val();
+	if (data_esc != data_f_esc) {
+	   
+	   $( "#string-fim-data" ).text(' a ' + data_f_esc);
+	}
+});
+   
+ });
+	</script>
+	
+<script type="text/javascript" src="js/googlechart.js"></script>
+		 <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawVisualization);
+
+	
+
+function drawVisualization() {
+  // Some raw data (not necessarily accurate)
+  var data = google.visualization.arrayToDataTable([
+    ['Month', 'Geral', 'Estudos', 'Viagem', 'Casamento'],
+    ['06/2018',  165,      938,         522,             998]
+  ]);
+
+  var options = {
+    title : 'Valores poupados por categoria',
+    vAxis: {title: "Valores"},
+    hAxis: {title: "Categorias"},
+    seriesType: "bars",
+    series: {5: {type: "line"}}
+  };
+
+ /* var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+  chart.draw(data, options);*/
+}
+</script>
+	
+</html
