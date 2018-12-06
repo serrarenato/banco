@@ -60,11 +60,12 @@ public class AcessoController {
 	}
 
 	@RequestMapping(value = "/boleto")
-	public ResponseEntity boleto(final @RequestParam Double value, @RequestParam String conta) {
+	public ResponseEntity boleto(final @RequestParam String value, @RequestParam String conta) {
 		System.out.println(conta + value);
 		UsuarioMovimentacaoModel usuarioMovimentacaoModel = new UsuarioMovimentacaoModel();
 		usuarioMovimentacaoModel.setConta(conta.replaceAll("\\D+", ""));
-		usuarioMovimentacaoModel.setValue(-value);
+		Double value2= new Double(value.replaceAll("\\D+", ""));
+		usuarioMovimentacaoModel.setValue(-value2);
 		usuarioMovimentacaoRepository.save(usuarioMovimentacaoModel);
 		return new ResponseEntity(HttpStatus.OK);
 
