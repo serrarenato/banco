@@ -1,0 +1,17 @@
+version: '3'
+networks:
+  db:
+services:
+  postgres:
+    container_name: banco
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=banco
+      - POSTGRES_USER=banco
+      - POSTGRES_PASSWORD=banco
+      - MAX_CONNECTIONS=300
+    networks:
+      - db
+
