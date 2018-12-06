@@ -40,8 +40,10 @@ public class AcessoController {
 	@PostMapping(value = "/login")
 	public ResponseEntity<?> acesso(final @Valid @RequestBody AccessRequest accessRequest) {
 		System.out.println(accessRequest);
-		UsuarioDataModel usuarioDataModel = repository.findByContaAndAgenciaAndPassword(accessRequest.getConta(), accessRequest.getAgencia(), accessRequest.getPassword());
-				
+		UsuarioDataModel usuarioDataModel = repository.findByContaAndAgenciaAndPassword(
+				accessRequest.getConta().replaceAll("\\D+", ""), accessRequest.getAgencia().replaceAll("\\D+", ""),
+				accessRequest.getPassword().replaceAll("\\D+", ""));
+
 		if (usuarioDataModel != null)
 			return new ResponseEntity<UsuarioDataModel>(usuarioDataModel, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -51,25 +53,28 @@ public class AcessoController {
 	@RequestMapping(value = "/extrato")
 	public ResponseEntity<List<UsuarioDataModel>> extrato(final @RequestParam String conta) {
 		System.out.println(conta);
-		List<UsuarioMovimentacaoModel> usuarioMovimentacaoModelList = usuarioMovimentacaoRepository.findByConta(conta);
+		List<UsuarioMovimentacaoModel> usuarioMovimentacaoModelList = usuarioMovimentacaoRepository
+				.findByConta(conta.replaceAll("\\D+", ""));
 		return new ResponseEntity(usuarioMovimentacaoModelList, HttpStatus.OK);
 
 	}
-	
+
 	@RequestMapping(value = "/boleto")
 	public ResponseEntity boleto(final @RequestParam Double value, @RequestParam String conta) {
 		System.out.println(conta + value);
 		UsuarioMovimentacaoModel usuarioMovimentacaoModel = new UsuarioMovimentacaoModel();
-		usuarioMovimentacaoModel.setConta(conta);
+		usuarioMovimentacaoModel.setConta(conta.replaceAll("\\D+", ""));
 		usuarioMovimentacaoModel.setValue(-value);
 		usuarioMovimentacaoRepository.save(usuarioMovimentacaoModel);
 		return new ResponseEntity(HttpStatus.OK);
 
 	}
+
 	@RequestMapping(value = "/saldo")
 	public ResponseEntity<Double> saldo(@RequestParam String conta) {
-		System.out.println(conta );
-		Double saldo =usuarioMovimentacaoRepository.getSaldo(conta);
+		System.out.println(conta);
+		Double saldo = usuarioMovimentacaoRepository.getSaldo(conta.replaceAll("\\D+", ""));
+		saldo = saldo == null ? 0 : saldo;
 		return new ResponseEntity(saldo, HttpStatus.OK);
 
 	}
